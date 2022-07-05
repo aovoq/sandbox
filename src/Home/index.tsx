@@ -7,6 +7,7 @@ const home: React.FC = () => {
          <h1>welcome sandbox</h1>
          <nav>
             <ul>
+               <li><Link to="ThreeTest">ThreeTest</Link></li>
                <li><Link to="ThreeSlider">ThreeSlider</Link></li>
             </ul>
          </nav>

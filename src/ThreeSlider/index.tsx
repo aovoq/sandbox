@@ -1,9 +1,25 @@
-import { FC } from 'react'
+import React, { useEffect, useRef } from 'react'
+import { createThreeScene } from './createThreeScene'
+import './style.scss'
 
-const ThreeSlider: FC = () => {
+const ThreeSlider: React.FC = () => {
+   const mountRef = useRef<HTMLDivElement>(null)
+
+   useEffect(() => {
+      const threeCanvas = createThreeScene(mountRef.current?.clientWidth, mountRef.current?.clientHeight)
+      mountRef.current?.appendChild(threeCanvas)
+      return () => {
+         mountRef.current?.removeChild(threeCanvas)
+      }
+   }, [])
+
    return (
       <>
-         <h3>ThreeSlider</h3>
+         <div ref={mountRef} className='canvas'>
+            <div className='description'>
+               <h3>ThreeSlider</h3>
+            </div>
+         </div>
       </>
    )
 }
